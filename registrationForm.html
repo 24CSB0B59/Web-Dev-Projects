@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #89fffd, #ef32d9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            background-color: bisque;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #333;
+            align-self: flex-start;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.5s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(0.98);
+        }
+
+        .images {
+            margin-bottom: 20px;
+        }
+
+        .images img {
+            width: 100px;
+            margin: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .progLang{
+            display: block;
+        }
+        .marquee {
+            color: #ff6347;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+    </style>
+</head>
+    <script>
+        function submitForm() {
+            alert('Form Submitted Successfully!');
+            document.getElementById('registrationForm').reset();
+        }
+        function resetForm() {
+            alert('Are you sure you want to reset? Your work will not be saved !');
+            document.getElementById('registrationForm').reset();
+        }
+    </script>
+<body>
+    <div class="container">
+        <h1><u>Registration Form</u></h1>
+        <div class="images">
+            <a href="https://www.nitw.ac.in/" target="_blank">
+                <img src="https://nitw.ac.in/api/static/files/Director_image1_2023-5-20-12-32-22.jpg" alt="NITW Logo">
+            </a>
+            <img src="https://erp.nitw.ac.in/ext/profile/getUserImage/ch-sarat" alt="Profile Image">
+        </div>
+        <div class="marquee">
+            <marquee width="100%" loop >Register Now, For a Better Future</marquee>
+        </div>
+        <hr>
+        <form id="registrationForm">
+            <label for="firstName">First name:</label>
+            <input type="text" id="firstName" name="firstName" value="Rishabh" readonly>
+
+            <label for="lastName">Last name:</label>
+            <input type="text" id="lastName" name="lastName">
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="select" selected>Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Others</option>
+            </select>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+
+            <label for="gpa">CGPA:</label>
+            <input type="text" id="gpa" name="gpa">
+
+            <label for="phone">Phone No.:</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="localAddress">Local Address:</label>
+            <textarea id="localAddress" name="localAddress"></textarea>
+
+            <label for="permanentAddress">Permanent Address:</label>
+            <textarea id="permanentAddress" name="permanentAddress"></textarea>
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country">
+
+            <label for="languages">Languages Known:</label>
+            <input type="text" id="languages" name="languages">
+
+            <label for="maritalStatus">Marital Status:</label>
+            <input type="text" id="maritalStatus" name="maritalStatus">
+
+            <p>Select Your Age:</p>
+            <input type="radio" id="age1" name="age" value="0-15">
+            <label for="age1">0 to 15</label>
+            <input type="radio" id="age2" name="age" value="15-30">
+            <label for="age2">15 to 30</label>
+
+            <label for="grade">12th Class Grade:</label>
+            <input type="text" id="grade" name="grade">
+
+            <label for="subjects">Select Subjects of your interest:</label>
+            <select id="subjects" name="subjects">
+                <option value="ML">Machine Learning</option>
+                <option value="AI" selected>Artificial Intelligence</option>
+                <option value="DS">Data Science</option>
+                <option value="CS">Cybersecurity</option>
+                <option value="DL">Deep Learning</option>
+            </select>
+            <div class="progLang" >
+                <p>Select your Favourite Programming Language:</p>
+                <input type="checkbox" name="progLang" value="C++"> C++
+                <input type="checkbox" name="progLang" value="Java"> Java
+                <input type="checkbox" name="progLang" value="JavaScript"> JavaScript
+                <input type="checkbox" name="progLang" value="Python"> Python
+                
+                <p>Are you registered on:</p>
+                <input type="checkbox" id="leetcode" name="platforms" value="Leetcode">
+                <label for="leetcode">Leetcode</label>
+                <input type="checkbox" id="gdb" name="platforms" value="GDB Classroom">
+                <label for="gdb">GDB Classroom</label>
+            </div>
+                
+            <div>
+                <button type="button" onclick="submitForm()">Submit</button>
+                <button type="reset" onclick="resetForm()" >Reset</button>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
