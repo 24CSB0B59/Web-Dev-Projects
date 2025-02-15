@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIT Warangal</title>
+    <style>
+        body, html {
+            margin: 0%;
+            padding: 0%;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: bisque;
+        }
+        .head {
+            position: fixed;
+            width: 100%;
+            height: 15%;
+            background-color: burlywood;
+            z-index: 1;
+            display: flex;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            margin-left: 7px;
+            width: 12%;
+        }
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .arrowDown {
+            margin-left: 5px;
+        }
+        .navbar>p {
+            padding: 8px;
+            border: 2px solid purple;
+            border-radius: 39px;
+        }
+        .navbar>p:hover {
+            background-color: lightskyblue;
+            border: 2px solid lightskyblue;
+        }
+        .fakeHeader {
+            width: 100%;
+            height: 15%;
+        }
+        .pages {
+            width: 100%;
+            height: 85%;
+            z-index: 10;
+            margin-top: 3%;
+            display: flex;
+        }
+        .announcements {
+            border: 2px black solid;
+            border-radius: 35px;
+            width: 40%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+            margin-left: 10%;
+            overflow: hidden;
+            animation: move 3s 1;
+        }
+        .announcements>p {
+            margin-left: 10%;
+            width: 80%;
+        }
+        .announcements>h2{
+            width: 50%; 
+            margin-left: 25%;
+            padding: 6px;
+            background-color: white; 
+            z-index: 1;
+            border: 2px  ;
+            border-radius: 30px;
+        }
+        .announcements>div {
+            position: absolute;
+            width: 100%;
+            animation: moveUp 10s linear infinite;
+        }
+        @keyframes moveUp {
+            0% { top: 100%; }
+            100% { top: -100%; }
+        }
+        @keyframes move {
+            0% { top: 100%; }
+            100% { top: 0%; }
+        }
+        .loader {
+            margin-left: 42%;
+            position: relative;
+            width: 40px;
+            height: 2px;
+            background: #000;
+        }
+        .loader::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ec0b1e;
+        }
+        .imgSlider {
+            background-color: salmon;
+            border: 2px black solid;
+            border-radius: 35px;
+            width: 40%;
+            height: 100%;
+            margin-left: 10%;
+            margin-right: 10%;
+            position: relative;
+            overflow: hidden;
+            animation: move 3s 1;
+        }
+        .slide {
+            height: 100%;
+            display: flex;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+        }
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        border: 2px solid black;
+        border-radius: 35px;
+        padding: 20px;
+        background-color: lightcoral;
+    }
+    .gallery img {
+        width: 30%;
+        height: 200px;
+        border-radius: 15px;
+        object-fit: cover;
+    }
+
+    </style>
+</head>
+<body>
+    <header class="head">
+        <div id="logo" class="navbar">
+            <a href="https://www.nitw.ac.in/" target="_blank">
+                <img height="100vh" src="https://www.nitw.ac.in/stuti/images/Picture2.png" alt="logo">
+            </a>
+        </div>
+        <div id="home" class="navbar">
+            <a href="http://127.0.0.1:3000/NITW_clone.html">
+                <img height="35vh" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHN8apIpjWlN3f7N5JxKPAfds3CGuy5LR7tA&s" alt="">
+            </a>
+        </div>
+        <div class="navbar">
+            <p>Institute <img class="arrowDown" height="13vh" src="arrow-down-sign-to-navigate.png" alt=""></p>
+        </div>
+        <div class="navbar">
+            <p>Administration <img class="arrowDown" height="13vh" src="arrow-down-sign-to-navigate.png" alt=""></p>
+        </div>
+        <div class="navbar">
+            <p>Academics <img class="arrowDown" height="13vh" src="arrow-down-sign-to-navigate.png" alt=""></p>
+        </div>
+        <div class="navbar">
+            <p>R&D <img class="arrowDown" height="13vh" src="arrow-down-sign-to-navigate.png" alt=""></p>
+        </div>
+        <div class="navbar">
+            <p>Students <img class="arrowDown" height="13vh" src="arrow-down-sign-to-navigate.png" alt=""></p>
+        </div>
+        <div class="navbar">
+            <p>Alumni <img class="arrowDown" height="13vh" src="arrow-down-sign-to-navigate.png" alt=""></p>
+        </div>
+    </header>
+    <div class="fakeHeader"></div>
+    <div class="pages">
+        <div class="announcements">
+            <h2 ><u>Announcements</u></h2>
+            <div>
+                <p>Notice - List of candidates provisionally shortlisted/ not-shortlisted for the Group 'A' posts and Group 'B' (Deputation) posts notified vide Advt. No. 05/2024 dt.29.11.2024</p>
+                <div class="loader"></div>
+                <p>Pattern of Examination and Indicative Syllabus for the Group 'B' & 'C' posts notified on Direct Recruitment basis against Advt. No. 05/2024 dated 29.11.2024</p>
+                <div class="loader"></div>
+                <p>Book Fair - 2025 (30-31 Jan 2025)</p>
+                <div class="loader"></div>
+                <p>Submission of Annual Life Certificate by pensioners/family pension-Status of receipt as of 10.12.2024</p>
+                <div class="loader"></div>
+                <p>Recruitment of Officers and Non-Academic Staff on Direct Recruitment/ Deputation basis - Last date: 07.01.2025</p>
+                <div class="loader"></div>
+                <p>Special Instructions to Students attending the Convocation</p>
+                <div class="loader"></div>
+                <p>Results of Faculty Selection against Rolling Advt. No. NITW/Admn/T01/Rolling/2024</p>
+                <div class="loader"></div>
+                <p>Hostel Fee Structure</p>
+                <div class="loader"></div>
+            </div>
+        </div>
+        <div class="imgSlider">
+            <div class="slide">
+                <img src="https://nitw.ac.in/api/static/files/GIAN_courses_2024-12-11-12-5-17.jpg" alt="Nature">
+                <img src="https://nitw.ac.in/api/static/files/Director_image1_2023-5-20-12-32-22.jpg" alt="City">
+                <img src="WhatsApp Image 2025-02-15 at 21.23.16_35c17955.jpg" alt="Technology">
+                <img src="https://nitw.ac.in/api/static/files/fd66main1_2024-10-12-17-52-32.jpg">
+                <img src="https://nitw.ac.in/api/static/files/fd66main2_2024-10-12-18-1-20.jpg">
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide img');
+        const totalSlides = slides.length;
+        function showSlide(index) {
+                slides.forEach((img, i) => {
+                        img.style.display = i === index ? 'block' : 'none';
+                    });
+                }
+                function nextSlide() {
+                        currentIndex = (currentIndex + 1) % totalSlides;
+                        showSlide(currentIndex);
+                    }
+                    setInterval(nextSlide, 2000);
+                    showSlide(currentIndex);
+                    </script>
+</body>
+    <br><h1 style="text-align: center; color: cornflowerblue;" ><u>Campus Life</u></h1>
+    <div class="gallery">
+        
+        <img src="https://thewarangal.com/wp-content/uploads/2023/09/1611464829IMG-20200202-WA0002.webp" alt="Image 1">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrx_Mf87XaOz23DPkw5d2K3vXuy0gAfuKQzQ&s" alt="Image 2">
+        <img src="https://media.telanganatoday.com/wp-content/uploads/2023/10/NIT-Warangal-.jpg" alt="Image 3">
+        <img src="https://media.telanganatoday.com/wp-content/uploads/2022/02/NIT-W.jpg" alt="Image 4">
+        <img src="https://nitw.ac.in/convocationall/images/con_2024/DSC00194.JPG" alt="Image 5">
+        <img src="https://www.sakshi.com/gallery_images/2022/04/11/Spring%20Spree%20Cultural%20Festival%20of%20NIT%20Warangal%20_3.jpg" alt="Image 6">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrr-j-xxgvZMJsuYp-tvn_p_pXpJer-s1grQ&s" alt="">
+        <img src="https://content3.jdmagicbox.com/v2/comp/warangal/q5/9999px870.x870.231004140017.w6q5/catalogue/nit-warangal-national-institute-of-technology-hanamkonda-warangal-colleges-clnfz1bq2s.jpg" alt="">
+    </div>
+</html>
