@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        #body {
+            background-image: url(https://www.andbeyond.com/wp-content/uploads/sites/5/Amber-fort-jaipur-Rajasthan-India.jpg);
+            /* background-color: lightskyblue; */
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        #heading {
+            border: 4px solid black;
+            border-radius: 12px;
+            text-align: center;
+            background-color: greenyellow;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #head {
+            width: 50%;
+            margin: 20px auto;
+        }
+        #form {
+            margin-top: 50px;
+            margin-left: 25%;
+            background-color: pink;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 50%;
+        }
+        input[type="text"], input[type="number"], input[type="date"], select {
+            display: block;
+            width: 80%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .more-inputs {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body id="body">
+    <div id="head">
+        <h1 id="heading">Book Hotel For Your Trip</h1>
+    </div>
+    <div id="form">
+        <h2><u>Come, Visit the Pink City</u></h2>
+        <label for="firstname">Enter First Name</label>
+        <input type="text" id="firstname" name="firstname">
+
+        <label for="lastname">Enter Last Name</label>
+        <input type="text" id="lastname" name="lastname">
+        
+        <label for="mobile">Enter Mobile Number</label>
+        <input type="number" id="mobile" name="mobile">
+        
+        <label for="email">Enter E-Mail</label>
+        <input type="text" id="email" name="email">
+        
+        <label for="dob">Enter Date of Birth</label>
+        <input type="date" id="dob" name="dob">
+        
+        <label for="people">Number of People Travelling</label>
+        <input type="number" id="people" name="people">
+        
+        <label for="checkin">Check-in Date</label>
+        <input type="date" id="checkin" name="checkin">
+        
+        <label for="checkout">Check-out Date</label>
+        <input type="date" id="checkout" name="checkout">
+        
+        <div class="more-inputs">
+            <label for="roomType">Room Type</label>
+            <select id="roomType" name="roomType">
+                <option value="standard">Standard</option>
+                <option value="deluxe">Deluxe</option>
+                <option value="suite">Suite</option>
+            </select>
+            
+            <label for="specialRequests">Special Requests</label>
+            <textarea id="specialRequests" name="specialRequests" rows="4"></textarea>
+        </div>
+        
+        <button type="submit">Book Now</button>
+    </div>
+</body>
+</html>

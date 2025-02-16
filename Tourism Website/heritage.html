@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Sites</title>
+  <style>
+    body {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: salmon;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+    }
+
+    .gallery-container {
+      max-width: 1200px;
+      width: 90%;
+      height: fit-content;
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay-text {
+      color: white;
+      font-size: 1.5em;
+      font-family: 'Arial', sans-serif;
+      animation: textFadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes textFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .text {
+      color: #fff;
+      font-size: 36px;
+      font-weight: bold;
+      position: relative;
+      animation: neonGlow 1s infinite alternate;
+    }
+
+    @keyframes neonGlow {
+      from {
+        text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #ffd700,
+          0 0 20px #ff6347, 0 0 25px #ff6347, 0 0 30px #ff6347, 
+          0 0 35px #ff6347, 0 0 40px #ff6347;
+      }
+      to {
+        text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700,
+          0 0 40px #ff6347, 0 0 50px #ff6347, 0 0 60px #ff6347, 
+          0 0 70px #ff6347, 0 0 80px #ff6347;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery-container">
+    <div class="text"><h1><u>Heritage Sites in Jaipur</u></h1></div>
+    <div class="gallery">
+        
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Hawa-Mahal.jpg" alt="Hawa Mahal">
+        
+        <div class="overlay">
+          <a target="_blank" href="hawa_mahal.html"><div class="overlay-text">Hawa Mahal</div></a>
+          
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Amer-Fort.jpg" alt="Amer Fort">
+        <div class="overlay">
+          <a target="_blank" href="amer_fort.html">
+          <div class="overlay-text">Amer Fort</div></a>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/City-Palace.jpg" alt="City Palace">
+        <div class="overlay">
+          <a target="_blank" href="city_palace.html">
+          <div class="overlay-text">City Palace</div></a>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Jantar-Mantar.jpg" alt="Jantar Mantar">
+        <div class="overlay">
+          <a href="jantar_mantar.html" target="_blank" >
+          <div class="overlay-text">Jantar Mantar</div></a>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Jaigarh-Fort.jpg" alt="Jaigarh Fort">
+        <div class="overlay">
+          <a href="jaigarh_fort.html" target="_blank" >
+          <div class="overlay-text">Jaigarh Fort</div></a>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Nahargarh-Fort.jpg" alt="Nahargarh Fort">
+        <div class="overlay">
+          <a href="nahargarh_fort.html" target="_blank" >
+          <div class="overlay-text">Nahargarh Fort</div></a>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Albert-Hall.jpg" alt="Albert Hall">
+        <div class="overlay">
+          <a href="albert_hall.html" target="_blank" >
+          <div class="overlay-text">Albert Hall</div></a>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Sisodia-Rani-Garden-Palace.jpg" alt="Sisodia Rani Garden Palace">
+        <div class="overlay">
+          <div class="overlay-text">Sisodia Rani Garden Palace</div>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Jal-Mahal.jpg" alt="Jal Mahal">
+        <div class="overlay">
+          <a href="jal_mahal.html" target="_blank" >
+          <div class="overlay-text">Jal Mahal</div></a>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://pinkcity.jaipurmcheritage.org/Presentation/Img/Monuments/Birla-Temple.jpg" alt="Birla Temple">
+        <div class="overlay">
+          <div class="overlay-text">Birla Temple</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

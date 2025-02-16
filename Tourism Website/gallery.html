@@ -1,0 +1,314 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 30vh; */
+        background-color: salmon;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        }
+
+        .gallery-container {
+        max-width: 1200px;
+        width: 90%;
+        height: fit-content;
+        text-align: center;
+        }
+
+        .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        }
+
+        .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
+        }
+
+        .gallery-item img {
+        width: 100%;
+        transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+        transform: scale(1.1);
+        }
+
+        .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s;
+        }
+
+        .gallery-item:hover .overlay {
+        opacity: 1;
+        }
+
+        .overlay-text {
+        color: white;
+        font-size: 1.5em;
+        font-family: 'Arial', sans-serif;
+        animation: textFadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+        }
+
+        @keyframes textFadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+        }
+        .text {
+                color: #6c5ce7;
+                font-size: 36px;
+                font-weight: bold;
+                position: relative;
+                opacity: 0; 
+                animation: slideIn 1.5s forwards, underline 2s 1.5s forwards; 
+            }
+
+            @keyframes slideIn {
+                0% {
+                    transform: translateY(-30px); 
+                    opacity: 0; 
+                }
+                100% {
+                    transform: translateY(0); 
+                    opacity: 1; 
+                }
+            }
+
+            @keyframes underline {
+                0% {
+                    width: 0;
+                }
+                100% {
+                    width: 100%;
+                }
+            }
+        .text::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 3px;
+                background-color: #6c5ce7;
+                width: 0%;
+                transition: width 0.3s ease;
+            }
+    </style>
+    </head>
+    <body >
+    <div class="gallery-container">
+        <div class="text" ><h1> <u>Image Gallery</u> </h1></div>
+        <div class="gallery">
+            
+        <div class="gallery-item">
+            <img src="https://static.wanderon.in/wp-content/uploads/2024/01/4b93633f-cc7c-42de-94b2-5ce9ac735fce.jpg" alt="Image 1">
+            <div class="overlay">
+            <div class="overlay-text"></div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTWoCYC1HMcr4n9DdxS-HjISVpVgAuoE6l1Oqdp7_s_jknUFqKe8rSFg3j8PdtSo9PCbEaNwmTFOaSHo0wYbrda6ex6kBTTwu8rxG7zYp4" alt="Image 2">
+            <div class="overlay">
+            <div class="overlay-text"></div>
+            </div>
+            
+        </div>
+        
+        <div class="gallery-item">
+        <img src="https://plus.unsplash.com/premium_photo-1661963054563-ce928e477ff3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://plus.unsplash.com/premium_photo-1661962404003-e0ca40da40ef?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+        
+        <div class="gallery-item">
+        <img height="150px" src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://plus.unsplash.com/premium_photo-1661962387472-553d96ed01a3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1477586957327-847a0f3f4fe3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1602339752474-f77aa7bcaecd?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1557690756-62754e561982?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1524230507669-5ff97982bb5e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8amFpcHVyfGVufDB8fDB8fHww" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1599661046274-f1154c4ea62b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1521427185932-e69b86608ff6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1589000865526-e0db02c3d7ad?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://plus.unsplash.com/premium_photo-1697730293007-8e45c574b590?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1573363059771-8b2b53b492ff?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://plus.unsplash.com/premium_photo-1661963050879-c6abd84f0261?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://plus.unsplash.com/premium_photo-1697729831106-dbca67df36af?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1519955266818-0231b63402bc?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTB8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1617540732046-c448921e862a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODR8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://plus.unsplash.com/premium_photo-1697730288821-62c119fb7c5d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1496372412473-e8548ffd82bc?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjZ8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+        <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1590770542366-7e77ea949cba?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fGphaXB1cnxlbnwwfHwwfHx8MA%3D%3D" alt="Image 2">
+        <div class="overlay">
+            <div class="overlay-text"></div>
+        </div>
+        </div>
+
+    </div>
+    </body>
+    </html>
