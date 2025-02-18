@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            background-color: rgb(252, 218, 173);
+        }
+        u {
+            color: #ffd700;
+            animation: neonGlow 0.8s infinite alternate;
+        }
+        @keyframes neonGlow {
+            from {
+                text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #ffd700, 0 0 20px #ff6347, 0 0 25px #ff6347, 0 0 30px #ff6347, 0 0 35px #ff6347, 0 0 40px #ff6347;
+            }
+            to {
+                text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ff6347, 0 0 50px #ff6347, 0 0 60px #ff6347, 0 0 70px #ff6347, 0 0 80px #ff6347;
+            }
+        }
+        #calc {
+            height: 480px;
+            width: 350px;
+            background-color: lightskyblue;
+            margin: auto;
+            padding: 5px;
+            border: 12px solid black;
+            border-radius: 15px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        h2 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .butt {
+            height: 60px;
+            width: 23%;
+            margin: 2px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.1s all;
+        }
+        .butt:active {
+            transform: scale(0.95);
+            background-color: salmon;
+            filter: blur(1.5px);
+        }
+        .display {
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: right;
+            margin: 2px;
+            background-color: rgb(134, 134, 134);
+            color: white;
+            padding-right: 10px;
+        }
+        #butt14, #butt24, #butt34, #butt44 {
+            background-color: rgb(255, 141, 65);
+        }
+        #butt43 {
+            background-color: greenyellow;
+        }
+        #butt01 {
+            background-color: rgb(238, 91, 91);
+        }
+    </style>
+</head>
+<body>
+    <h1><u>Calculator</u></h1>
+    <div id="calc">
+        <div class="display">
+            <h1 id="result">00</h1>
+        </div>
+        <div id="row0" class="row">
+            <button id="butt01" class="butt" onclick="clearDisplay()"><h2>C</h2></button>
+            <button class="butt" onclick="updateDisplay('^2')"><h3>x<sup>2</sup></h3></button>
+            <button class="butt" onclick="updateDisplay('sqrt(')"><h3>rt(x)</h3></button>
+            <button id="butt14" class="butt" onclick="calculate()"><h3>Ans</h3></button>
+        </div>
+        <div id="row1" class="row">
+            <button class="butt" onclick="updateDisplay('7')"><h2>7</h2></button>
+            <button class="butt" onclick="updateDisplay('8')"><h2>8</h2></button>
+            <button class="butt" onclick="updateDisplay('9')"><h2>9</h2></button>
+            <button id="butt14" class="butt" onclick="updateDisplay('+')"><h2>+</h2></button>
+        </div>
+        <div id="row2" class="row">
+            <button class="butt" onclick="updateDisplay('4')"><h2>4</h2></button>
+            <button class="butt" onclick="updateDisplay('5')"><h2>5</h2></button>
+            <button class="butt" onclick="updateDisplay('6')"><h2>6</h2></button>
+            <button id="butt24" class="butt" onclick="updateDisplay('-')"><h2>-</h2></button>
+        </div>
+        <div id="row3" class="row">
+            <button class="butt" onclick="updateDisplay('1')"><h2>1</h2></button>
+            <button class="butt" onclick="updateDisplay('2')"><h2>2</h2></button>
+            <button class="butt" onclick="updateDisplay('3')"><h2>3</h2></button>
+            <button id="butt34" class="butt" onclick="updateDisplay('*')"><h2>*</h2></button>
+        </div>
+        <div id="row4" class="row">
+            <button class="butt" onclick="updateDisplay('0')"><h2>0</h2></button>
+            <button id="butt42" class="butt" onclick="updateDisplay('00')"><h2>00</h2></button>
+            <button id="butt43" class="butt" onclick="calculate()"><h2>=</h2></button>
+            <button id="butt44" class="butt" onclick="updateDisplay('/')"><h2>/</h2></button>
+        </div>
+        <div id="row5" class="row">
+            <button class="butt" onclick="updateDisplay('*10')"><h2>*10<sup>x</sup></h2></button>
+            <button id="butt42" class="butt" onclick="updateDisplay('(')"><h2>(</h2></button>
+            <button class="butt" onclick="updateDisplay(')')"><h2>)</h2></button>
+            <button id="butt44" class="butt" onclick="updateDisplay('%')"><h2>%</h2></button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('result');
+
+        function clearDisplay(){
+            display.innerText = '00';
+        }
+
+        function updateDisplay(value) {
+            if(display.innerText === '00') {
+                display.innerText = value;
+            }else {
+                display.innerText += value;
+            }
+        }
+
+        function calculate(){
+            try{
+                display.innerText = eval(display.innerText);
+            }catch{
+                display.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
