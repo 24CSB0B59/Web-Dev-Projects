@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourite Movie List</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* height: 60vh; */
+            flex-direction: column;
+            background-image: url(https://photoshopstar.com/media/2008/06/the-dark-knight.jpg);
+            background-color: lightskyblue;
+        }
+        h1 {
+            font-size: xxx-large;
+            color: yellow;
+            animation: neonGlow 0.7s infinite alternate;
+        }
+        @keyframes neonGlow {
+            from {
+                text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #ffd700,
+                0 0 20px #ff6347, 0 0 25px #ff6347, 0 0 30px #ff6347, 
+                0 0 35px #ff6347, 0 0 40px #ff6347;
+            }
+            to {
+                text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700,
+                0 0 40px #ff6347, 0 0 50px #ff6347, 0 0 60px #ff6347, 
+                0 0 70px #ff6347, 0 0 80px #ff6347;
+            }
+        }
+        .addmovie {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style: italic;
+            align-items: center;
+        }
+        #movieInput {
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 23vw;
+            font-size: large;
+            font-style: italic;
+            color: crimson;
+            border: 2px solid salmon;
+            border-radius: 30px;
+            box-shadow: 4px 4px 3px 2px #ff6347;
+        }
+        #movieInput:hover {
+            border: 3px solid yellow;
+        }
+        #movieInput:active {
+            border: 3px solid yellow;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            border: 3px solid purple;
+            border-radius: 30px;
+            background-color: cornflowerblue;
+            color: white;
+            font-family: cursive;
+            font-size: medium;
+            font-weight: 800;
+            position: relative;
+            top: 2vh;
+            left: 25%;
+        }
+        button:hover {
+            background-color: burlywood;
+        }
+        button:active {
+            transform: scale(0.9);
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+            background-color: salmon;
+        }
+        .movie-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            width: 20vw;
+            font-size: medium;
+        }
+        .movie-list li {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            margin: 5px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        #movieCount {
+            font-size: 20px;
+            color: yellow;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #removeAllBtn {
+            background-color: red;
+            color: white;
+            margin-top: 20px;
+            width: 10vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="addmovie">
+        <h1>My Favourite Movies</h1>
+        <input type="text" id="movieInput" placeholder="Enter a Movie Name">
+        <br>
+        <button id="button">Add Movie</button>
+        <button id="removeAllBtn">Clear List</button> 
+        <div id="movieCount">Total Movies: 0</div> 
+        <ul id="movieList" class="movie-list"></ul>
+    </div>
+
+    <script>
+        let movies = [];
+
+        const movieInput = document.getElementById('movieInput');
+        const addMovieBtn = document.getElementById('button');
+        const removeAllBtn = document.getElementById('removeAllBtn');
+        const movieList = document.getElementById('movieList');
+        const movieCountDisplay = document.getElementById('movieCount'); 
+
+        function displayMovies() {
+            movieList.innerHTML = ''; 
+            for (let i = 0; i < movies.length; i++) {
+                const movieItem = document.createElement('li');
+                movieItem.textContent = movies[i];
+                movieList.appendChild(movieItem);
+            }
+            movieCountDisplay.textContent = `Total Movies: ${movies.length}`;
+        }
+
+        addMovieBtn.addEventListener('click', function() {
+            const movie = movieInput.value.trim();
+
+            if (movie !== '') {
+                movies.push(movie); 
+                displayMovies();
+                movieInput.value = ''; 
+            } else {
+                alert('Please enter a valid movie name!');
+            }
+        });
+
+        removeAllBtn.addEventListener('click', function() {
+            movies = []; 
+            displayMovies(); 
+        });
+
+        movieInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addMovieBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
