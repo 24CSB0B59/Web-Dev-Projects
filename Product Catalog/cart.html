@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            height: 50px;
+            background-image: url(stylish-glowing-digital-red-lines-banner_1017-23964.avif);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        header ul {
+            display: flex;
+            margin-left: 500px;
+            gap: 50px;
+            list-style-type: none;
+            font-weight: 700;
+            font-family: sans-serif;
+        }
+
+        header ul li:hover {
+            color: crimson;
+            cursor: pointer;
+        }
+
+        header a {
+            text-decoration: none;
+            color: white;
+        }
+
+        h2 {
+            font-style: italic;
+            margin-left: 10px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1em;
+        }
+
+        .cart-item p {
+            margin-left: 20px;
+        }
+
+        button {
+            padding: 0.5em 1em;
+            margin-left: 30px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .clear-cart-btn {
+            margin-top: 20px;
+            background-color: red;
+        }
+
+        .clear-cart-btn:hover {
+            background-color: darkred;
+        }
+
+        .total-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="product Catalog.html"><h2>Product Catalog</h2></a>
+        <ul>
+            <li>Home</li>
+            <li>Categories</li>
+            <li>Setting</li>
+            <li>Contact Us</li>
+            <li>Logout</li>
+        </ul>
+    </header>
+
+    <main>
+        <h2><u>Your Shopping Cart</u></h2>
+        <div id="cart-items"></div>
+        <!-- <div class="total-price" id="total-price">Total: ₹0</div> -->
+        <button class="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+
+        <script>
+            function displayCart() {
+                const cartItemsDiv = document.getElementById('cart-items');
+                const totalPriceDiv = document.getElementById('total-price');
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let total = 0;
+
+                cartItemsDiv.innerHTML = ''; 
+
+                if (cart.length === 0) {
+                    cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+                    totalPriceDiv.innerHTML = "Total: ₹0";
+                } else {
+                    cart.forEach((item, index) => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.classList.add('cart-item');
+                        itemDiv.innerHTML = `<p>${item.name}</p><p>${item.price}</p>
+                                             <button onclick="removeFromCart(${index})">Remove</button>`;
+                        cartItemsDiv.appendChild(itemDiv);
+
+                        let price = item.price.replace('₹', '').replace('$', '').replace(',', ''); 
+                        total += parseFloat(price);
+                    });
+                }
+            }
+
+            function removeFromCart(index) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.splice(index, 1); 
+                localStorage.setItem('cart', JSON.stringify(cart)); 
+                displayCart(); 
+            }
+
+            function clearCart() {
+                localStorage.removeItem('cart');
+                displayCart(); 
+                alert('Cart has been cleared.');
+            }
+
+            window.onload = function () {
+                displayCart();
+            };
+        </script>
+    </main>
+
+</body>
+
+</html>
