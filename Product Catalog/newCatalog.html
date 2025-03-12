@@ -187,14 +187,57 @@
             font-size: 1.5em;
             font-weight: bold;
         }
+        .table-container {
+            /* margin-top: 50px; */
+            margin: 20px;
+        }
 
-        </style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+    </style>
 </head>
 
 <body>
-    
+
     <header>
-        <a href="product Catalog.html"><h2>Product Catalog</h2></a>
+        <a href="product Catalog.html">
+            <h2>Product Catalog</h2>
+        </a>
         <ul>
             <li>Home</li>
             <li>Categories</li>
@@ -205,7 +248,7 @@
             <li><a href="cart.html" target="_blank"><button>Go to Cart</button></a></li>
         </ul>
     </header>
-    
+
     <div class="timer-container">
         <input type="number" id="timer-input" placeholder="Enter seconds" />
         <div class="timer-display" id="timer-display">00:00</div>
@@ -259,7 +302,24 @@
 
 
     </main>
+    <div class="table-container">
+        <h2>Dynamic Table</h2>
+        <input type="text" id="name-input" placeholder="Enter Name">
+        <input type="text" id="age-input" placeholder="Enter Age">
+        <button onclick="addRow()">Add Row</button>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
 
+            </tbody>
+        </table>
+    </div>
     <script>
         let timer;
         let remainingTime = 0;
@@ -324,8 +384,49 @@
             remainingTime = 0;
             document.getElementById("timer-input").value = "";
             document.getElementById("timer-display").textContent = "00:00";
-            document.body.style.backgroundColor = '#f7f7f7'; // Reset background
+            document.body.style.backgroundColor = '#f7f7f7'; 
             timerRunning = false;
+        }
+        function addRow() {
+            let name = document.getElementById("name-input").value;
+            let age = document.getElementById("age-input").value;
+
+            if (!name || !age) {
+                alert("Please fill out both fields.");
+                return;
+            }
+
+            let table = document.getElementById("data-table").getElementsByTagName('tbody')[0];
+            let newRow = table.insertRow();
+
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td>${age}</td>
+                <td><button onclick="deleteRow(this)">Delete</button></td>
+            `;
+
+            document.getElementById("name-input").value = '';
+            document.getElementById("age-input").value = '';
+        }
+
+        function deleteRow(button) {
+            let row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function openModal(imgElement) {
+            const modal = document.getElementById("image-modal");
+            const modalImg = document.getElementById("modal-img");
+
+            modal.style.display = "flex";
+            modalImg.src = imgElement.src;
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById("image-modal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
 
