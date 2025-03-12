@@ -7,7 +7,7 @@
     <title>New Catalog</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f7f7f7;
@@ -35,6 +35,7 @@
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
         }
 
         button:hover {
@@ -51,30 +52,28 @@
         }
 
         header {
-            height: 50px;
+            height: 60px;
             background-image: url(stylish-glowing-digital-red-lines-banner_1017-23964.avif);
             color: #fff;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
-            padding: 1em 0;
-            z-index: 2;
-            text-align: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         header ul {
             display: flex;
-            margin-left: 200px;
-            gap: 50px;
+            gap: 20px;
             list-style-type: none;
             font-weight: 700;
-            font-family: sans-serif;
         }
 
         header ul li:hover {
             color: crimson;
             cursor: pointer;
+            transform: translateY(-2px);
+            transition: transform 0.2s;
         }
 
         header a {
@@ -88,31 +87,31 @@
         }
 
         main {
+            display: flex;
             justify-content: space-around;
-            margin-top: 50px;
+            margin-top: 20px;
         }
 
         .sidebar {
-            /* display: flex; */
-            /* align-items: center; */
             background-color: cornsilk;
             width: 200px;
             height: 70vh;
-            padding: 0px;
-            box-shadow: 0 0 10px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
 
         .sidebar ul {
             list-style-type: none;
-            margin: 7px;
+            margin: 0;
             padding: 0;
         }
 
         .sidebar ul li {
-            margin: 50px 0px;
+            margin: 20px 0;
             font-weight: 600;
             cursor: pointer;
+            transition: color 0.3s;
         }
 
         .sidebar ul li:hover {
@@ -126,6 +125,8 @@
             min-width: 160px;
             z-index: 1;
             padding-left: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown:hover .dropdown-content {
@@ -135,6 +136,7 @@
         .dropdown-content li {
             padding: 8px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .dropdown-content li:hover {
@@ -150,28 +152,35 @@
 
         .products {
             background-color: bisque;
-            justify-content: space-between;
-            box-shadow: 0 0 10px;
-            border-radius: 3px;
-            height: 110%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            height: 115%;
             width: 95%;
             margin-left: 20px;
             margin-bottom: 1em;
+            padding: 10px;
         }
 
         .items {
             display: flex;
             padding: 15px;
             flex-wrap: wrap;
+            gap: 10px;
         }
 
         .item {
             margin: 5px 10px;
-            width: 210px;
+            width: 200px;
             height: 300px;
-            border: 1px grey solid;
-            border-radius: 5px;
+            border: 1px solid grey;
+            border-radius: 10px;
             overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
         .item button {
@@ -188,6 +197,8 @@
         .item img {
             object-fit: contain;
             object-position: center center;
+            width: 100%;
+            height: 60%;
         }
 
         #cart-items .cart-item {
@@ -197,10 +208,9 @@
         }
 
         .timer-container {
-            /* text-align: center; */
             display: flex;
             margin-left: 20px;
-            margin-top: 20px;
+            margin-top: 70px;
             gap: 10px;
         }
 
@@ -208,8 +218,8 @@
             font-size: 1.5em;
             font-weight: bold;
         }
+
         .table-container {
-            /* margin-top: 50px; */
             margin: 20px;
         }
 
@@ -218,11 +228,14 @@
             border-collapse: collapse;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid #ddd;
         }
 
-        th, td {
+        th,
+        td {
             padding: 8px 12px;
             text-align: center;
         }
@@ -249,6 +262,107 @@
         .modal-content {
             max-width: 80%;
             max-height: 80%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #444;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .footer-content p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 25px;
+        }
+
+        .social-media a {
+            transition: transform 0.3s ease;
+        }
+
+        .social-media a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-media img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .item {
+            position: relative;
+            margin: 5px 10px;
+            width: 200px;
+            height: 300px;
+            border: 1px solid grey;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .item .description {
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+            width: 180px;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .item:hover .description {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        body.dark-mode .item .description {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #121212;
         }
     </style>
 </head>
@@ -332,37 +446,57 @@
             <div class="products">
                 <h2><u>Products</u></h2>
                 <div class="items">
-                    <div class="item">
+                    <div class="item fade-in">
                         <img width="210px" src="Baby-Blue-T-shirt_13e30dcd-30f4-43fd-96b0-dde16de0c8b6.jpg" alt="">
                         <p>₹ 499</p>
+                        <span class="description">Soft and comfortable baby blue T-shirt, perfect for casual
+                            wear.</span>
                         <button onclick="addToCart('Baby-Blue-T-shirt', 499)">Add to Cart</button>
                     </div>
-                    <div class="item">
+                    <div class="item fade-in">
                         <img width="210px" src="HP-ENVY-x360-Laptop-OLED-13-3.jpg" alt="">
                         <p>₹ 97,999</p>
+                        <span class="description">HP ENVY x360 Laptop with OLED display, lightweight and
+                            powerful.</span>
                         <button onclick="addToCart('HP ENVY Laptop', 97999)">Add to Cart</button>
                     </div>
-                    <div class="item">
+                    <div class="item fade-in">
                         <img width="210px" src="05_hockenheim_pur_sport_jet_grey.jpg" alt="">
                         <p>$ 3.6 million</p>
+                        <span class="description">Luxury sports car with a sleek design and unmatched
+                            performance.</span>
                         <button onclick="addToCart('Hockenheim Pur Sport', 3600000)">Add to Cart</button>
                     </div>
-                    <div class="item">
+                    <div class="item fade-in">
                         <img width="210px" src="1712917854337-watmrkA.webp" alt="">
                         <p>For NAB (NITW)</p>
-                        <button onclick="addToCart('NAB Project', 'Contact for Price')">Add to Cart</button>
+                        <span class="description">Exclusive project for NAB, designed for innovation and
+                            efficiency.</span>
+                        <button onclick="addToCart('NAB Project', 0)">Add to Cart</button>
                     </div>
-                    <div class="item">
+                    <div class="item fade-in">
                         <img height="210px" src="geforce-rtx-40-series-new.jpeg" alt="">
                         <p>₹ 49,999</p>
+                        <span class="description">GeForce RTX 40 Series GPU, delivering cutting-edge gaming
+                            performance.</span>
                         <button onclick="addToCart('GeForce RTX 40', 49999)">Add to Cart</button>
+                    </div>
+                    <div class="item fade-in">
+                        <img height="240px" src="WMNS+AIR+JORDAN+1+MID.png" alt="">
+                        <p>$ 125</p>
+                        <span class="description">Classic Air Jordan 1 Mid sneakers, combining style and comfort.</span>
+                        <button onclick="addToCart('Air Jordan 1', 10375)">Add to Cart</button>
+                    </div>
+                    <div class="item fade-in">
+                        <img height="240px" src="Sony-PlayStation-Pro-5.webp" alt="">
+                        <p>₹ 49,990</p>
+                        <button onclick="addToCart('Sony Playstation 5', 49990)">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </section>
-
-
     </main>
+    <br><br><br><br>
     <div class="table-container">
         <h2>Dynamic Table</h2>
         <input type="text" id="name-input" placeholder="Enter Name">
@@ -377,10 +511,24 @@
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
     </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Product Catalog. All rights reserved.</p>
+            <div class="social-media">
+                <a href="https://facebook.com" target="_blank"><img
+                        src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
+                <a href="https://twitter.com" target="_blank"><img
+                        src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Twitter"></a>
+                <a href="https://instagram.com" target="_blank"><img
+                        src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
+                <a href="https://linkedin.com" target="_blank"><img
+                        src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </footer>
     <script>
         let timer;
         let remainingTime = 0;
@@ -445,9 +593,10 @@
             remainingTime = 0;
             document.getElementById("timer-input").value = "";
             document.getElementById("timer-display").textContent = "00:00";
-            document.body.style.backgroundColor = '#f7f7f7'; 
+            document.body.style.backgroundColor = '#f7f7f7';
             timerRunning = false;
         }
+
         function addRow() {
             let name = document.getElementById("name-input").value;
             let age = document.getElementById("age-input").value;
