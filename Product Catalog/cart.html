@@ -11,6 +11,12 @@
             background-color: #f7f7f7;
             margin: 0;
             padding: 0;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
         }
 
         header {
@@ -18,20 +24,20 @@
             background-image: url(stylish-glowing-digital-red-lines-banner_1017-23964.avif);
             color: #fff;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
-            padding: 1em 0;
+            padding: 0 20px;
             text-align: center;
         }
 
         header ul {
             display: flex;
-            margin-left: 500px;
-            gap: 50px;
+            gap: 20px;
             list-style-type: none;
             font-weight: 700;
             font-family: sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         header ul li:hover {
@@ -52,29 +58,48 @@
         .cart-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1em;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .cart-item p {
-            margin-left: 20px;
+            margin: 0;
+            font-size: 1.1em;
         }
 
-        button {
+        .cart-item button {
             padding: 0.5em 1em;
-            margin-left: 30px;
             border: none;
-            background-color: #007bff;
-            color: #fff;
+            background-color: #ff4d4d;
+            color: white;
             cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        .cart-item button:hover {
+            background-color: #cc0000;
         }
 
         .clear-cart-btn {
-            margin-top: 20px;
+            margin: 20px;
+            padding: 0.8em 1.5em;
+            border: none;
             background-color: red;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .clear-cart-btn:hover {
@@ -84,75 +109,105 @@
         .total-price {
             font-size: 1.2em;
             font-weight: bold;
-            margin-top: 20px;
+            margin: 20px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode .cart-item {
+            background-color: #333;
+            color: white;
+        }
+
+        body.dark-mode .cart-item button {
+            background-color: #ff6666;
+        }
+
+        body.dark-mode .cart-item button:hover {
+            background-color: #ff3333;
+        }
+
+        body.dark-mode .clear-cart-btn {
+            background-color: #ff3333;
+        }
+
+        body.dark-mode .clear-cart-btn:hover {
+            background-color: #cc0000;
         }
     </style>
 </head>
 
 <body>
-
     <header>
-        <a href="product Catalog.html"><h2>Product Catalog</h2></a>
+        <a href="product Catalog.html">
+            <h2>Product Catalog</h2>
+        </a>
         <ul>
             <li>Home</li>
             <li>Categories</li>
             <li>Setting</li>
             <li>Contact Us</li>
             <li>Logout</li>
+            <button onclick="toggleDarkMode()">Dark Mode</button>
         </ul>
     </header>
 
     <main>
         <h2><u>Your Shopping Cart</u></h2>
         <div id="cart-items"></div>
-        <!-- <div class="total-price" id="total-price">Total: ₹0</div> -->
+        <div class="total-price" id="total-price">Total: ₹0</div>
         <button class="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
-
-        <script>
-            function displayCart() {
-                const cartItemsDiv = document.getElementById('cart-items');
-                const totalPriceDiv = document.getElementById('total-price');
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                let total = 0;
-
-                cartItemsDiv.innerHTML = ''; 
-
-                if (cart.length === 0) {
-                    cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
-                    totalPriceDiv.innerHTML = "Total: ₹0";
-                } else {
-                    cart.forEach((item, index) => {
-                        const itemDiv = document.createElement('div');
-                        itemDiv.classList.add('cart-item');
-                        itemDiv.innerHTML = `<p>${item.name}</p><p>${item.price}</p>
-                                             <button onclick="removeFromCart(${index})">Remove</button>`;
-                        cartItemsDiv.appendChild(itemDiv);
-
-                        let price = item.price.replace('₹', '').replace('$', '').replace(',', ''); 
-                        total += parseFloat(price);
-                    });
-                }
-            }
-
-            function removeFromCart(index) {
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                cart.splice(index, 1); 
-                localStorage.setItem('cart', JSON.stringify(cart)); 
-                displayCart(); 
-            }
-
-            function clearCart() {
-                localStorage.removeItem('cart');
-                displayCart(); 
-                alert('Cart has been cleared.');
-            }
-
-            window.onload = function () {
-                displayCart();
-            };
-        </script>
     </main>
 
+    <script>
+        function displayCart() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            const totalPriceDiv = document.getElementById('total-price');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let total = 0;
+
+            cartItemsDiv.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+                totalPriceDiv.innerHTML = "Total: ₹0";
+            } else {
+                cart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('cart-item');
+                    itemDiv.innerHTML = `
+                        <p>${item.name}</p>
+                        <p>₹${item.price.toLocaleString()}</p>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartItemsDiv.appendChild(itemDiv);
+
+                    total += parseFloat(item.price);
+                });
+                totalPriceDiv.innerHTML = `Total: ₹${total.toLocaleString()}`;
+            }
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            displayCart();
+            alert('Cart has been cleared.');
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        window.onload = function () {
+            displayCart();
+        };
+    </script>
 </body>
 
 </html>
