@@ -93,6 +93,8 @@
         }
 
         .sidebar {
+            /* display: flex; */
+            /* align-items: center; */
             background-color: cornsilk;
             width: 200px;
             height: 70vh;
@@ -104,20 +106,39 @@
         .sidebar ul {
             list-style-type: none;
             margin: 7px;
+            padding: 0;
         }
 
         .sidebar ul li {
             margin: 50px 0px;
             font-weight: 600;
+            cursor: pointer;
         }
 
         .sidebar ul li:hover {
             color: lightskyblue;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: cornsilk;
+            min-width: 160px;
+            z-index: 1;
+            padding-left: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content li {
+            padding: 8px;
             cursor: pointer;
         }
 
-        .sidebar ul li img:hover {
-            transform: rotate(180deg);
+        .dropdown-content li:hover {
+            background-color: #ddd;
         }
 
         #product-list {
@@ -262,10 +283,50 @@
         <section id="product-list">
             <div class="sidebar">
                 <ul>
-                    <li>Price Range <img src="arrow-down-sign-to-navigate.png" width="10px"></li>
-                    <li>Discount <img src="arrow-down-sign-to-navigate.png" width="10px"></li>
-                    <li>Color <img src="arrow-down-sign-to-navigate.png" width="10px"></li>
-                    <li>Brand <img src="arrow-down-sign-to-navigate.png" width="10px"></li>
+                    <li class="dropdown">
+                        Price Range <img src="arrow-down-sign-to-navigate.png" width="10px">
+                        <div class="dropdown-content">
+                            <ul>
+                                <li>$0 - $100</li>
+                                <li>$101 - $500</li>
+                                <li>$501 - $1000</li>
+                                <li>Above $1000</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        Discount <img src="arrow-down-sign-to-navigate.png" width="10px">
+                        <div class="dropdown-content">
+                            <ul>
+                                <li>10% Off</li>
+                                <li>20% Off</li>
+                                <li>30% Off</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        Color <img src="arrow-down-sign-to-navigate.png" width="10px">
+                        <div class="dropdown-content">
+                            <ul>
+                                <li>Red</li>
+                                <li>Blue</li>
+                                <li>Green</li>
+                                <li>Black</li>
+                                <li>White</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        Brand <img src="arrow-down-sign-to-navigate.png" width="10px">
+                        <div class="dropdown-content">
+                            <ul>
+                                <li>Brand A</li>
+                                <li>Brand B</li>
+                                <li>Brand C</li>
+                                <li>Brand D</li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="products">
