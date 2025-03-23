@@ -52,6 +52,19 @@
             box-sizing: border-box;
             font-size: 1rem;
         }
+        #ageInput {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        #ageInput div {
+            display: flexbox;
+            margin: 10px;
+        }
+        #ageInput div input {
+            height: 15px;
+            width: 15px;
+        }
 
         button {
             width: 100%;
@@ -82,7 +95,15 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .progLang{
+            margin-bottom: 30px;
+            margin-top: 25px;
             display: block;
+        }
+        .progLang div{
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
         }
         .marquee {
             color: #ff6347;
@@ -111,10 +132,7 @@
     <div class="container">
         <h1><u>Registration Form</u></h1>
         <div class="images">
-            <a href="https://www.nitw.ac.in/" target="_blank">
-                <img src="https://nitw.ac.in/api/static/files/Director_image1_2023-5-20-12-32-22.jpg" alt="NITW Logo">
-            </a>
-            <img src="https://erp.nitw.ac.in/ext/profile/getUserImage/ch-sarat" alt="Profile Image">
+            <img src="nitw logo.png" alt="">
         </div>
         <div class="marquee">
             <marquee width="100%" loop >Register Now, For a Better Future</marquee>
@@ -134,12 +152,15 @@
                 <option value="female">Female</option>
                 <option value="other">Others</option>
             </select>
-
+            
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob">
-
+            
             <label for="gpa">CGPA:</label>
             <input type="text" id="gpa" name="gpa">
+
+            <label for="grade">12th Class Grade:</label>
+            <input type="text" id="grade" name="grade">
 
             <label for="phone">Phone No.:</label>
             <input type="tel" id="phone" name="phone">
@@ -152,7 +173,7 @@
 
             <label for="permanentAddress">Permanent Address:</label>
             <textarea id="permanentAddress" name="permanentAddress"></textarea>
-
+            
             <label for="country">Pincode</label>
             <input type="text" id="country" name="country">
             
@@ -169,13 +190,17 @@
             <input type="text" id="maritalStatus" name="maritalStatus">
 
             <p>Select Your Age:</p>
-            <input type="radio" id="age1" name="age" value="0-15">
-            <label for="age1">0 to 15</label>
-            <input type="radio" id="age2" name="age" value="15-30">
-            <label for="age2">15 to 30</label>
+            <div id="ageInput">
+                <div>
+                    <input type="radio" id="age1" name="age" value="0-15">
+                    <label for="age1">0 to 15</label>
+                </div>
+                <div>
+                    <input type="radio" id="age2" name="age" value="15-30">
+                    <label for="age2">15 to 30</label>
+                </div>
+            </div>
 
-            <label for="grade">12th Class Grade:</label>
-            <input type="text" id="grade" name="grade">
 
             <label for="subjects">Select Subjects of your interest:</label>
             <select id="subjects" name="subjects">
@@ -187,16 +212,27 @@
             </select>
             <div class="progLang" >
                 <p>Select your Favourite Programming Language:</p>
-                <input type="checkbox" name="progLang" value="C++"> C++
-                <input type="checkbox" name="progLang" value="Java"> Java
-                <input type="checkbox" name="progLang" value="JavaScript"> JavaScript
-                <input type="checkbox" name="progLang" value="Python"> Python
+                <div>
+                    <input type="checkbox" name="progLang" value="C++"> C++
+                    <input type="checkbox" name="progLang" value="Java"> Java
+                    <input type="checkbox" name="progLang" value="JavaScript"> JavaScript
+                    <input type="checkbox" name="progLang" value="Python"> Python
+
+                </div>
                 
                 <p>Are you registered on:</p>
-                <input type="checkbox" id="leetcode" name="platforms" value="Leetcode">
-                <label for="leetcode">Leetcode</label>
-                <input type="checkbox" id="gdb" name="platforms" value="GDB Classroom">
-                <label for="gdb">GDB Classroom</label>
+                <div>
+                    <div>
+                        <input type="checkbox" id="leetcode" name="platforms" value="Leetcode">
+                        <label for="leetcode">Leetcode</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="gdb" name="platforms" value="GDB Classroom">
+                        <label for="gdb">GDB Classroom</label>
+                    </div>
+                    
+                </div>
             </div>
                 
             <div>
