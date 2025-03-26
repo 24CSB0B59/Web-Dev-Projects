@@ -6,97 +6,226 @@
     <title>Digital Clock with Alarm</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
-            background-image: url(clock.jpg);
-            background-size: cover;
-            /* background-color: #f0f0f0; */
-            color: #333;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
         header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px 0;
-            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 90%;
         }
         .clock {
-            font-size: 4rem;
+            font-size: 5rem;
             margin: 20px 0;
-            color: #4CAF50;
+            color: #fff;
+            text-shadow: 0 0 15px #fff, 0 0 30px #ff00ff, 0 0 45px #ff00ff;
+            animation: glow 1.5s infinite alternate;
+        }
+        .clock .colon {
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #d4bd29, 0 0 20px #dfe14b, 0 0 30px #b27131;
+            }
+            100% {
+                text-shadow: 0 0 10px #394eae, 0 0 10px #3b5da7, 0 0 20px #3963a6;
+            }
+        }
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-10px);
+            }
+            50% {
+                transform: translateX(10px);
+            }
+            75% {
+                transform: translateX(-10px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
         }
         .date {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #f0f0f0;
         }
         .section {
-            margin: 20px 0;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #4CAF50;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffcc00;
+            text-shadow: 0 0 10px #ffcc00;
         }
         .alarm-container input, .countdown input {
-            padding: 10px;
-            font-size: 1rem;
+            padding: 12px;
+            font-size: 1.2rem;
             margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            outline: none;
         }
         .buttons button, button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            margin: 5px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            margin: 10px;
             cursor: pointer;
             border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .buttons button:hover, button:hover {
-            background-color: #45a049;
+            transform: scale(1.05);
+            background: linear-gradient(to right, #feb47b, #ff7e5f);
         }
         .stopwatch, .countdown {
-            margin-top: 20px;
+            margin-top: 30px;
         }
         .dark-mode {
-            background-color: #333;
-            color: white;
+            background-image: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+            color: #f0f0f0;
         }
         .dark-mode header {
-            background-color: #222;
+            background-color: #0f2027;
         }
         .dark-mode .container {
-            background-color: #444;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 15px rgba(255, 255, 255, 0.1);
         }
         .dark-mode .clock {
-            color: #76FF03;
+            color: #00E676;
         }
         .dark-mode .section h2 {
-            color: #76FF03;
+            color: #00E676;
         }
         .dark-mode .buttons button, .dark-mode button {
-            background-color: #76FF03;
-            color: black;
+            background-color: #00E676;
+            color: #0f2027;
         }
         .dark-mode .buttons button:hover, .dark-mode button:hover {
-            background-color: #64DD17;
+            background-color: #00C853;
+        }
+        .light-mode {
+            background-image: url(clock.jpg);
+            background-size: cover;
+            background-position: center;
+            color: #000;
+        }
+        .neon-mode {
+            background-color: #000;
+            color: #39ff14;
+            text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14;
+        }
+        .neon-mode header {
+            background-color: #111;
+        }
+        .neon-mode .container {
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 8px 15px rgba(57, 255, 20, 0.5);
+        }
+        .neon-mode .buttons button, .neon-mode button {
+            background-color: #39ff14;
+            color: #000;
+        }
+        .neon-mode .buttons button:hover, .neon-mode button:hover {
+            background-color: #32cd32;
+        }
+        .custom-mode {
+            background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+        }
+        .custom-mode header {
+            background-color: #ff7e5f;
+        }
+        .custom-mode .container {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 15px rgba(255, 126, 95, 0.5);
+        }
+        .custom-mode .buttons button, .custom-mode button {
+            background-color: #feb47b;
+            color: #fff;
+        }
+        .custom-mode .buttons button:hover, .custom-mode button:hover {
+            background-color: #ff7e5f;
+        }
+        .theme-buttons button {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+        }
+        .theme-buttons button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+        }
+        #setAlarmButton{
+            color: salmon;
+            background-color: navy;
+        }
+        .custom-alert {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+            font-weight: bold;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            z-index: 1000;
+        }
+        .custom-alert.show {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -111,7 +240,9 @@
         <div class="section alarm-container">
             <h2>Set Alarm</h2>
             <input type="time" id="alarmTime">
-            <button onclick="setAlarm()">Set Alarm</button>
+            <button id="amPmToggle" onclick="toggleAmPm()">AM</button>
+            <button id="setAlarmButton" onclick="setAlarm()" disabled>Set Alarm</button>
+            <button id="resetAlarmButton" onclick="resetAlarm()">Reset Alarm</button>
         </div>
         
         <div class="section stopwatch">
@@ -128,11 +259,21 @@
             <h2>Countdown Timer</h2>
             <input type="number" id="countdownInput" placeholder="Seconds">
             <button onclick="startCountdown()">Start</button>
+            <button onclick="resetCountdown()">Reset</button>
             <div id="countdownDisplay"></div>
+        </div>
+        
+        <div class="section theme-buttons">
+            <h2>Choose Theme</h2>
+            <button onclick="setTheme('light-mode')">Light Mode</button>
+            <button onclick="setTheme('dark-mode')">Dark Mode</button>
+            <button onclick="setTheme('neon-mode')">Neon Mode</button>
+            <button onclick="setTheme('custom-mode')">Custom Mode</button>
         </div>
         
         <button id="themeToggle" onclick="toggleTheme()">Toggle Dark Mode</button>
     </div>
+    <div id="customAlert" class="custom-alert"></div>
     <script>
         function updateClock() {
             let now = new Date();
@@ -140,24 +281,75 @@
             let minutes = now.getMinutes().toString().padStart(2, '0');
             let seconds = now.getSeconds().toString().padStart(2, '0');
             let ampm = now.getHours() >= 12 ? 'PM' : 'AM';
-            document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds} ${ampm}`;
+            document.getElementById("clock").innerHTML = `
+                ${hours}<span class="colon">:</span>${minutes}<span class="colon">:</span>${seconds} ${ampm}`;
             document.getElementById("date").innerHTML = now.toDateString();
         }
         setInterval(updateClock, 1000);
         updateClock();
 
         let alarmTime = null;
-        function setAlarm() {
-            alarmTime = document.getElementById("alarmTime").value;
-            alert("Alarm set for " + alarmTime);
+        let isAm = true;
+        let alarmSet = false;
+
+        function toggleAmPm() {
+            if (alarmSet) {
+                alert("You cannot change AM/PM after the alarm is set.");
+                return;
+            }
+            isAm = !isAm;
+            document.getElementById("amPmToggle").innerText = isAm ? "AM" : "PM";
         }
+
+        document.getElementById("alarmTime").addEventListener("input", () => {
+            const alarmTimeInput = document.getElementById("alarmTime").value;
+            document.getElementById("setAlarmButton").disabled = !alarmTimeInput;
+        });
+
+        function setAlarm() {
+            const alarmTimeInput = document.getElementById("alarmTime").value;
+            const amPm = isAm ? "AM" : "PM";
+            alarmTime = alarmTimeInput + " " + amPm;
+            alarmSet = true;
+            showAlert("Alarm set for " + alarmTime);
+        }
+
+        function resetAlarm() {
+            alarmTime = null;
+            alarmSet = false;
+            isAm = true;
+            document.getElementById("alarmTime").value = "";
+            document.getElementById("amPmToggle").innerText = "AM";
+            document.getElementById("setAlarmButton").disabled = true;
+            showAlert("Alarm has been reset.");
+        }
+
+        function triggerShakeEffect() {
+            const container = document.querySelector('.container');
+            if (!container.classList.contains('shake')) {
+                container.classList.add('shake');
+                setTimeout(() => container.classList.remove('shake'), 500);
+            }
+        }
+
         setInterval(() => {
             let now = new Date();
             let currentTime = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
             if (currentTime === alarmTime) {
-                alert("Alarm ringing!");
+                showAlert("Alarm ringing!");
+                triggerShakeEffect();
+                alarmSet = false; // Reset alarmSet after ringing
             }
         }, 1000);
+
+        function showAlert(message) {
+            const alertBox = document.getElementById("customAlert");
+            alertBox.textContent = message;
+            alertBox.classList.add("show");
+            setTimeout(() => {
+                alertBox.classList.remove("show");
+            }, 2000); // Alert will fade out after 2 seconds
+        }
 
         let stopwatchInterval;
         let stopwatchTime = 0;
@@ -190,11 +382,32 @@
             }, 1000);
         }
 
+        function resetCountdown() {
+            clearInterval(countdownInterval);
+            document.getElementById("countdownDisplay").innerText = "";
+            document.getElementById("countdownInput").value = "";
+        }
+
+        const themes = ["light-mode", "dark-mode", "neon-mode", "custom-mode"];
+        let currentThemeIndex = 0;
+
         function toggleTheme() {
             const body = document.body;
-            const isDarkMode = body.classList.toggle('dark-mode');
-            document.getElementById("themeToggle").innerText = isDarkMode ? "Toggle Light Mode" : "Toggle Dark Mode";
+            body.classList.remove(...themes);
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            body.classList.add(themes[currentThemeIndex]);
+            const themeNames = ["Light Mode", "Dark Mode", "Neon Mode", "Custom Mode"];
+            document.getElementById("themeToggle").innerText = `Switch to ${themeNames[(currentThemeIndex + 1) % themes.length]}`;
         }
+
+        function setTheme(theme) {
+            const body = document.body;
+            body.classList.remove(...themes);
+            body.classList.add(theme);
+        }
+
+        // Set the initial theme to light mode
+        document.body.classList.add("light-mode");
     </script>
 </body>
 </html>
