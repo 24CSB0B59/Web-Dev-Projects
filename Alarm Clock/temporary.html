@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock with Alarm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url(clock.jpg);
+            background-size: cover;
+            /* background-color: #f0f0f0; */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .clock {
+            font-size: 4rem;
+            margin: 20px 0;
+            color: #4CAF50;
+        }
+        .date {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        .alarm-container input, .countdown input {
+            padding: 10px;
+            font-size: 1rem;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .buttons button, button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover, button:hover {
+            background-color: #45a049;
+        }
+        .stopwatch, .countdown {
+            margin-top: 20px;
+        }
+        .dark-mode {
+            background-image: url(clock-dark.jpg);
+            background-size: cover;
+            color: white;
+        }
+        .dark-mode header {
+            background-color: #222;
+        }
+        .dark-mode .container {
+            background-color: #444;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+        .dark-mode .clock {
+            color: #76FF03;
+        }
+        .dark-mode .section h2 {
+            color: #76FF03;
+        }
+        .dark-mode .buttons button, .dark-mode button {
+            
+            background-color: #76FF03;
+            color: black;
+        }
+        .dark-mode .buttons button:hover, .dark-mode button:hover {
+            background-color: #64DD17;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Digital Clock</h1>
+    </header>
+    <div class="container">
+        <div class="clock" id="clock"></div>
+        <div class="date" id="date"></div>
+        
+        <div class="section alarm-container">
+            <h2>Set Alarm</h2>
+            <input type="time" id="alarmTime">
+            <button onclick="setAlarm()">Set Alarm</button>
+        </div>
+        
+        <div class="section stopwatch">
+            <h2>Stopwatch</h2>
+            <div id="stopwatchDisplay">00:00:00</div>
+            <div class="buttons">
+                <button onclick="startStopwatch()">Start</button>
+                <button onclick="pauseStopwatch()">Pause</button>
+                <button onclick="resetStopwatch()">Reset</button>
+            </div>
+        </div>
+        
+        <div class="section countdown">
+            <h2>Countdown Timer</h2>
+            <input type="number" id="countdownInput" placeholder="Seconds">
+            <button onclick="startCountdown()">Start</button>
+            <button onclick="resetCountdown()">Reset</button>
+            <div id="countdownDisplay"></div>
+        </div>
+        
+        <button id="themeToggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+    </div>
+    <script>
+        function updateClock() {
+            let now = new Date();
+            let hours = now.getHours() % 12 || 12;
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            let seconds = now.getSeconds().toString().padStart(2, '0');
+            let ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+            document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds} ${ampm}`;
+            document.getElementById("date").innerHTML = now.toDateString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        let alarmTime = null;
+        function setAlarm() {
+            alarmTime = document.getElementById("alarmTime").value;
+            alert("Alarm set for " + alarmTime);
+        }
+        setInterval(() => {
+            let now = new Date();
+            let currentTime = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
+            if (currentTime === alarmTime) {
+                alert("Alarm ringing!");
+            }
+        }, 1000);
+
+        let stopwatchInterval;
+        let stopwatchTime = 0;
+        function startStopwatch() {
+            stopwatchInterval = setInterval(() => {
+                stopwatchTime++;
+                let hrs = Math.floor(stopwatchTime / 3600);
+                let mins = Math.floor((stopwatchTime % 3600) / 60);
+                let secs = stopwatchTime % 60;
+                document.getElementById("stopwatchDisplay").innerText = `${hrs}:${mins}:${secs}`;
+            }, 1000);
+        }
+        function pauseStopwatch() { clearInterval(stopwatchInterval); }
+        function resetStopwatch() {
+            clearInterval(stopwatchInterval);
+            stopwatchTime = 0;
+            document.getElementById("stopwatchDisplay").innerText = "00:00:00";
+        }
+
+        let countdownInterval;
+        function startCountdown() {
+            let timeLeft = parseInt(document.getElementById("countdownInput").value);
+            countdownInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    alert("Time's up!");
+                } else {
+                    document.getElementById("countdownDisplay").innerText = timeLeft-- + "s left";
+                }
+            }, 1000);
+        }
+
+        function resetCountdown() {
+            clearInterval(countdownInterval);
+            document.getElementById("countdownDisplay").innerText = "";
+            document.getElementById("countdownInput").value = "";
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const isDarkMode = body.classList.toggle('dark-mode');
+            document.getElementById("themeToggle").innerText = isDarkMode ? "Toggle Light Mode" : "Toggle Dark Mode";
+        }
+    </script>
+</body>
+</html>
